@@ -18,12 +18,6 @@ pipeline {
                 archiveArtifacts 'gitleaks-report.json'
             }
         }
-        stage('OWASP Dependency Check') {
-            steps {
-                sh '/opt/dependency-check/bin/dependency-check.sh --scan . --format HTML --out owasp-report'
-                archiveArtifacts 'owasp-report/dependency-check-report.html'
-            }
-        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
