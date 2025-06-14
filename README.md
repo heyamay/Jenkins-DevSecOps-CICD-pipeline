@@ -167,7 +167,6 @@ This project requires basic familiarity with AWS, Jenkins, and Docker.
 * **Security Groups:** For production, restrict `Anywhere (0.0.0.0/0)` access to specific IPs or VPCs.
 * **Free Tier Limits:** Monitor your AWS usage to avoid unexpected charges. `t2.micro` instances can be resource-constrained for heavy loads.
 * **SonarQube Persistence:** For a production SonarQube, use an external database (like AWS RDS PostgreSQL) instead of the embedded H2 database, which is not persistent.
-* **ECS Deployment:** The ECS deployment stage is conceptual. A real-world scenario would involve more robust deployment strategies (e.g., blue/green, canary) using AWS CodeDeploy, Terraform, or CloudFormation.
 * **Error Handling:** In a real pipeline, security scan failures should break the build. For this demo, `|| true` might be used to allow pipeline progression.
 
 ---
