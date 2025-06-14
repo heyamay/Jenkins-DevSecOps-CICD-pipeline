@@ -18,6 +18,12 @@ pipeline {
                 archiveArtifacts 'gitleaks-report.json'
             }
         }
+        stage('OWASP Dependency-Check Scan') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --format XML --out dependency-check-report.xml', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
